@@ -13,7 +13,7 @@ microservice:
 resilience4j:
   circuitbreaker:
     instances:
-      orderService:
+      manageService:
         registerHealthIndicator: true
         eventConsumerBufferSize: 10
         automaticTransitionFromOpenToHalfOpenEnabled: true
