@@ -8,11 +8,11 @@ spring:
           enabled: true
       routes:
         - id: service-customer
-          uri: http://localhost:8184/
+          uri: http://192.168.0.17:8184/
           predicates:
             - Path=/customer/**
         - id: service-product
-          uri: http://localhost:8182/
+          uri: http://192.168.0.17:8182/
           predicates:
             - Path=/product/**
 eureka:
