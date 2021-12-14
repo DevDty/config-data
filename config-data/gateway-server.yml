@@ -16,9 +16,9 @@ spring:
           predicates:
             - Path=/product/**
         - id: service-manage
-            uri: http://192.168.0.17:8083/
-            predicates:
-              - Path=/manage/**
+          uri: http://192.168.0.17:8083/
+          predicates:
+            - Path=/manage/**
 eureka:
   client:
     serviceUrl:
