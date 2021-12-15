@@ -15,14 +15,13 @@ resilience4j:
     instances:
       manageService:
         registerHealthIndicator: true
-        eventConsumerBufferSize: 10
-        automaticTransitionFromOpenToHalfOpenEnabled: true
-        failureRateThreshold: 5
-        minimumNumberOfCalls: 2
-        permittedNumberOfCallsInHalfOpenState: 3
         slidingWindowSize: 10
-        waitDurationInOpenState: 3s
-        slidingWindowType: COUNT_BASED
+        permittedNumberOfCallsInHalfOpenState: 3
+        slidingWindowType: TIME_BASED
+        minimumNumberOfCalls: 5
+        waitDurationInOpenState: 5s
+        failureRateThreshold: 5
+        eventConsumerBufferSize: 10
 
 management:
   health:
