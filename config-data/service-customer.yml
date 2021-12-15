@@ -7,9 +7,4 @@ server:
 spring:
   application:
     name: service-customer
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
 
