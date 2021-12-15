@@ -18,10 +18,10 @@ resilience4j:
         eventConsumerBufferSize: 10
         automaticTransitionFromOpenToHalfOpenEnabled: true
         failureRateThreshold: 5
-        minimumNumberOfCalls: 5
+        minimumNumberOfCalls: 1
         permittedNumberOfCallsInHalfOpenState: 3
         slidingWindowSize: 10
-        waitDurationInOpenState: 5s
+        waitDurationInOpenState: 1s
         slidingWindowType: COUNT_BASED
 
 management:
