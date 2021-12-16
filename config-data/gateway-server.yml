@@ -1,3 +1,24 @@
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        sliding-window-size: 8
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 15s
+        permitted-number-of-calls-in-half-open-state: 10
+        slow-call-rate-threshold: 50
+        slow-call-duration-threshold: 3s
+    instances:
+      customer:
+        base-config: default
+  timelimiter:
+    configs:
+      default:
+        timeout-duration: 2s
+    instances:
+      customer:
+        base-config: default
+
 spring:
   application:
     name: gateway-server
@@ -11,6 +32,11 @@ spring:
           uri: http://192.168.0.17:8184/
           predicates:
             - Path=/customer/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: customer
+                statusCodes: 500
         - id: service-product
           uri: http://192.168.0.17:8082/
           predicates:

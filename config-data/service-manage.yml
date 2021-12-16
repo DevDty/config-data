@@ -11,27 +11,3 @@ microservice:
   web:
     customer: http://service-customer/customer
 
-resilience4j:
-  circuitbreaker:
-    instances:
-      manage:
-        registerHealthIndicator: true
-        slidingWindowSize: 10
-        permittedNumberOfCallsInHalfOpenState: 3
-        slidingWindowType: COUNT_BASED
-        minimumNumberOfCalls: 5
-        waitDurationInOpenState: 5s
-        failureRateThreshold: 5
-        eventConsumerBufferSize: 10
-
-management:
-  health:
-    circuitbreakers:
-      enabled: true
-  endpoints:
-    web:
-      exposure:
-        include: health
-  endpoint:
-    health:
-      show-details: always
