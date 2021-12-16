@@ -32,3 +32,14 @@ resilience4j:
     instances:
       customer:
         base-config: default
+management:
+  health:
+    circuitbreakers:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: always
