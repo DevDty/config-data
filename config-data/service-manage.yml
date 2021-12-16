@@ -15,6 +15,7 @@ resilience4j:
   circuitbreaker:
     configs:
       default:
+	registerHealthIndicator: true
         sliding-window-size: 8
         failure-rate-threshold: 50
         wait-duration-in-open-state: 15s
