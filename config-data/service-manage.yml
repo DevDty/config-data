@@ -30,7 +30,7 @@ resilience4j:
       default:
         timeout-duration: 2s
     instances:
-      customer:
+      manage:
         base-config: default
 management:
   health:
