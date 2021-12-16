@@ -13,25 +13,17 @@ microservice:
 
 resilience4j:
   circuitbreaker:
-    configs:
-      default:
-	registerHealthIndicator: true
-        sliding-window-size: 8
-        failure-rate-threshold: 50
-        wait-duration-in-open-state: 15s
-        permitted-number-of-calls-in-half-open-state: 10
-        slow-call-rate-threshold: 50
-        slow-call-duration-threshold: 3s
     instances:
       manage:
-        base-config: default
-  timelimiter:
-    configs:
-      default:
-        timeout-duration: 2s
-    instances:
-      manage:
-        base-config: default
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        permittedNumberOfCallsInHalfOpenState: 3
+        slidingWindowType: COUNT_BASED
+        minimumNumberOfCalls: 5
+        waitDurationInOpenState: 5s
+        failureRateThreshold: 5
+        eventConsumerBufferSize: 10
+
 management:
   health:
     circuitbreakers:
