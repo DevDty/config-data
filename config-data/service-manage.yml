@@ -10,27 +10,24 @@ spring:
 microservice:
   web:
     customer: http://service-customer/customer
+
 resilience4j:
   circuitbreaker:
+    configs:
+      default:
+        sliding-window-size: 8
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 15s
+        permitted-number-of-calls-in-half-open-state: 10
+        slow-call-rate-threshold: 50
+        slow-call-duration-threshold: 3s
     instances:
       manage:
-        registerHealthIndicator: true
-        slidingWindowSize: 10
-        permittedNumberOfCallsInHalfOpenState: 3
-        slidingWindowType: TIME_BASED
-        minimumNumberOfCalls: 5
-        waitDurationInOpenState: 5s
-        failureRateThreshold: 5
-        eventConsumerBufferSize: 10
-
-management:
-  health:
-    circuitbreakers:
-      enabled: true
-  endpoints:
-    web:
-      exposure:
-        include: health
-  endpoint:
-    health:
-      show-details: always
+        base-config: default
+  timelimiter:
+    configs:
+      default:
+        timeout-duration: 2s
+    instances:
+      customer:
+        base-config: default
